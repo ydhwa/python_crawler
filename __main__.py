@@ -15,7 +15,10 @@ def crawling_pelicana():
 
     for page in count(start=1):
         url = 'https://pelicana.co.kr/store/stroe_search.html?page=%d&branch_name=&gu=&si=' % page
-        html = crawler.crawling(url)
+        try:
+            html = crawler.crawling(url)
+        except Exception as e:
+            continue
 
         bs = BeautifulSoup(html, 'html.parser')
 
@@ -46,7 +49,10 @@ def crawling_nene():
 
     for page in count(start=1):
         url = 'https://nenechicken.com/17_new/sub_shop01.asp?ex_select=1&ex_select2=&IndexSword=&GUBUN=A&page=%d' % page
-        html = crawler.crawling(url)
+        try:
+            html = crawler.crawling(url)
+        except Exception as e:
+            continue
 
         bs = BeautifulSoup(html, 'html.parser')
 

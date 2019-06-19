@@ -42,7 +42,7 @@ def ex02():
     # fetch
     result = crawler.crawling(url='https://movie.naver.com/movie/sdb/rank/rmovie.nhn', encoding='cp949',
                               proc1=proc_naver_movie_rank,
-                              proc2=lambda data: list(map(lambda x: print(x.a.text, x.a['href'], sep=": "), data)))
+                              proc2=lambda data: list(map(lambda t: print(t[0] + 1, t[1].a.text, t[1].a['href'], sep=": "), enumerate(data))))
 
 
 # ex01()이 None을 return해주므로 and not을 조건으로 걸어야 뒤에 있는 ex02()가 실행된다.
