@@ -21,20 +21,19 @@ def crawling(url='', encoding='utf-8',
     except Exception as e:
         err(e)
 
-'''
-def crawling2(url='', encoding='utf-8',
-             err=lambda e: print(f'{e}: {datetime.now()}', file=sys.stderr),
-             **procs=lambda data: data):
-    try:
-        request = Request(url)
 
-        ssl._create_default_https_context = ssl._create_unverified_context
-        response = urlopen(request)
-        print(f'{datetime.now()}: success for request [{url}]')
-
-        receive = response.read()
-        return proc2(proc1(receive.decode(encoding, errors='replace')))
-
-    except Exception as e:
-        err(e)
-'''
+# def crawling2(url='', encoding='utf-8',
+#              err=lambda e: print(f'{e}: {datetime.now()}', file=sys.stderr),
+#              **procs=lambda data: data):
+#     try:
+#         request = Request(url)
+#
+#         ssl._create_default_https_context = ssl._create_unverified_context
+#         response = urlopen(request)
+#         print(f'{datetime.now()}: success for request [{url}]')
+#
+#         receive = response.read()
+#         return proc2(proc1(receive.decode(encoding, errors='replace')))
+#
+#     except Exception as e:
+#         err(e)
