@@ -7,26 +7,15 @@ from urllib.request import Request, urlopen
 import pandas as pd
 from bs4 import BeautifulSoup
 
+from collection import crawler
+
 
 def crawling_pelicana():
     results = []
 
     for page in count(start=1):
         url = 'https://pelicana.co.kr/store/stroe_search.html?page=%d&branch_name=&gu=&si=' % page
-        try:
-            request = Request(url)
-
-            ssl._create_default_https_context = ssl._create_unverified_context
-            response = urlopen(request)
-
-            receive = response.read()
-            html = receive.decode('utf-8', errors='replace')
-
-            print(f'{datetime.now()}: success for request [{url}]')
-        except Exception as e:
-            # datetime import 주의
-            print(f'{e}: {datetime.now()}', file=sys.stderr)
-            continue
+        html = crawler.crawling(url)
 
         bs = BeautifulSoup(html, 'html.parser')
 
@@ -57,19 +46,7 @@ def crawling_nene():
 
     for page in count(start=1):
         url = 'https://nenechicken.com/17_new/sub_shop01.asp?ex_select=1&ex_select2=&IndexSword=&GUBUN=A&page=%d' % page
-        try:
-            request = Request(url)
-
-            ssl._create_default_https_context = ssl._create_unverified_context
-            response = urlopen(request)
-
-            receive = response.read()
-            html = receive.decode('utf-8', errors='replace')
-
-            print(f'{datetime.now()}: success for request [{url}]')
-        except Exception as e:
-            print(f'{e}: {datetime.now()}', file=sys.stderr)
-            continue
+        html = crawler.crawling(url)
 
         bs = BeautifulSoup(html, 'html.parser')
 
