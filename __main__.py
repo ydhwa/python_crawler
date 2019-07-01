@@ -46,7 +46,8 @@ def crawling_nene():
     results = []
     first_shopname = ''
 
-    for page in count(start=1):
+    # for page in count(start=1):
+    for page in range(1, 5):
         url = 'https://nenechicken.com/17_new/sub_shop01.asp?ex_select=1&ex_select2=&IndexSword=&GUBUN=A&page=%d' % page
         try:
             html = crawler.crawling(url)
@@ -155,10 +156,10 @@ if __name__ == '__main__':
     # crawling_pelicana()
 
     # nene 과제
-    # crawling_nene()
+    crawling_nene()
 
     # kyochon
     # crawling_kyochon()
 
     # goobne
-    crawling_goobne()
+    # crawling_goobne()
