@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 import time
 from itertools import count
@@ -74,7 +75,14 @@ def crawling_nene():
 
     # store
     table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
-    table.to_csv('__results__/nene.csv', encoding='utf-8', mode='w', index=True)
+
+    # 저장 위치의 문제 (절대 경로를 구하여 그곳에 저장시키도록 해보자.)
+    # BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    # RESULT_DIR = f'{BASE_DIR}/__results__'
+    # table.to_csv(f'{RESULT_DIR}/nene.csv', encoding='utf-8', mode='w', index=True)
+
+    # mysite-upload처럼 프로젝트 내부가 아니라 외부에 저장을 시키도록 한다.
+    table.to_csv(f'/root/crawling-results/nene.csv', encoding='utf-8', mode='w', index=True)
 
 
 def crawling_kyochon():
